@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <title>加班时间分析</title>
+  <link rel="stylesheet" href="css/3D.css" />
+  <script src="js/flexible.js"></script>
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/echarts.min.js"></script>
+  <script src="js/echarts-gl.min.js"></script>
+</head>
+
+<body>
+  <!-- 头部的盒子 -->
+  <!-- <div id="xh" style="width: 270px;height: 44px; background: url(images/xh.png);
+			 position: absolute;left: 25px;top: 10px; z-index: 999" ;
+		 onclick="window.location.href= 'index.html';return false">
+	</div> -->
+  <header>
+    <h1 onclick="window.location.href= 'index.html';return false">工作平均加班时长分析</h1>
+    <div class="showTime"></div>
+    <script>
+      var t = null;
+      t = setTimeout(time, 1000); //开始运行
+      function time() {
+        clearTimeout(t); //清除定时器
+        dt = new Date();
+        var y = dt.getFullYear();
+        var mt = dt.getMonth() + 1;
+        var day = dt.getDate();
+        var h = dt.getHours(); //获取时
+        var m = dt.getMinutes(); //获取分
+        var s = dt.getSeconds(); //获取秒
+        document.querySelector(".showTime").innerHTML =
+          "当前时间：" + y + "年" + mt + "月" + day + "日" + h + ":" + m + ":" + s;
+        t = setTimeout(time, 1000); //设定定时器，循环运行
+      }
+    </script>
+  </header>
+
+  <div class="wrapper" id="bar3D">
+  </div>
+
+
+  <script type="text/javascript">
+
+    $(function () {
+      /******************* 3D柱形图 ******************/
+
+      $.get("http://127.0.0.1:8888/api/bar3d", function (ret) {
+      }).done(ret => {
+        console.log("======")
+        console.log(ret)
+        //初始化echarts实例
+        const bar3D = echarts.init(document.getElementById("bar3D"));
+
+        const job = ret[0].job
+        const days = ret[1].days
+        const data = ret[2].data
+        const barOpt = {
+          tooltip: {
+            formatter: function (params) {
+              let series = params.seriesName;
+              let val = params.value;
+              return series + '<br/>' +
+                days[val[1]] + '<br/>' +
+                job[val[0]] + '<br/>工作时长：' + val[2];
+            }
+          },
+          visualMap: {
+            max: 5,
+            min: 1,
+            calculable: true,
+            inRange: {
+              color: ['#50a3ba', '#eac736', '#d94e5d']
+            },
+            textStyle: {
+              color: '#fff'
+            }
+          },
+          grid3D: {
+            top: -70,
+            boxWidth: 220,
+            boxDepth: 90,
+            viewControl: {
+              distance: 300, //视觉距离
+              autoRotate: true //自动旋转
+            },
+            light: { //光照配置
+              main: {
+                intensity: 1.2,
+                shadow: true
+              },
+              ambient: {
+                intensity: 0.3
+              }
+            },
+            axisLabel: {
+              textStyle: {
+                color: '#fff'
+              }
+            },
+            axisLine: {
+              lineStyle: {
+                color: '#fff',
+                width: 1
+              }
+            },
+            axisPointer: {
+              show: false
+            }
+          },
+          xAxis3D: {
+            type: 'category',
+            name: '职业',
+            data: job,
+            axisLabel: {
+              //  color:'#6c706f',
+              interval: 0,
+              rotate: 45, //代表逆时针旋转45度
+            },
+          },
+          yAxis3D: {
+            type: 'category',
+            name: '',
+            data: days
+          },
+          zAxis3D: {
+            type: 'value',
+            name: '平均加班时长'
+          },
+          series: [{
+            type: 'bar3D',
+            name: 'Bar3D',
+            data: data.map(function (item) {
+              return {
+                value: [item[1], item[0], item[2]]
+              }
+            }),
+            shading: 'lambert',
+            emphasis: {
+              label: {
+                textStyle: {
+                  fontSize: 16,
+                  color: '#900'
+                }
+              },
+              itemStyle: {
+                color: '#900'
+              }
+            }
+          }]
+        };
+        //渲染图表
+        bar3D.setOption(barOpt);
+
+        /********** 浏览器窗口改变时，重置报表大小 ****************/
+        window.onresize = function () {
+          bar3D.resize();
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

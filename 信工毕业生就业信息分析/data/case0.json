@@ -1,0 +1,116 @@
+[
+  [
+    {
+      "name": "网页UI设计",
+      "number": 25
+    },
+    {
+      "name": "后期制作",
+      "number": 12
+    },
+    {
+      "name": "广告设计",
+      "number": 16
+    },
+    {
+      "name": "动画制作",
+      "number": 20
+    },
+    {
+      "name": "摄影",
+      "number": 6
+    },
+    {
+      "name": "模型设计",
+      "number": 11
+    }
+  ],
+  [
+    {
+      "name": "软件开发",
+      "number": 9
+    },
+    {
+      "name": "软件测试",
+      "number": 13
+    },
+    {
+      "name": "网站运营维护",
+      "number": 7
+    },
+    {
+      "name": "网络维护",
+      "number": 10
+    },
+    {
+      "name": "Web开发",
+      "number": 19
+    }
+  ],
+  [
+    {
+      "name": "资金管理",
+      "number": 10
+    },
+    {
+      "name": "投资",
+      "number": 3
+    },
+    {
+      "name": "保险销售",
+      "number": 13
+    },
+    {
+      "name": "财务规划",
+      "number": 8
+    }
+  ],
+  [
+    {
+      "name": "教学人员",
+      "number": 8
+    },
+    {
+      "name": "其他专业技术人员",
+      "number": 4
+    },
+    {
+      "name": "公务员",
+      "number": 12
+    },
+    {
+      "name": "个体",
+      "number": 2
+    },
+    {
+      "name": "自媒体",
+      "number": 28
+    },
+    {
+      "name": "服务业",
+      "number": 10
+    }
+  ],
+  [
+    {
+      "name": "会计类",
+      "number": 5
+    },
+    {
+      "name": "计算机类",
+      "number": 14
+    },
+    {
+      "name": "艺术类",
+      "number": 8
+    },
+    {
+      "name": "农业类",
+      "number": 3
+    },
+    {
+      "name": "其他类",
+      "number": 2
+    }
+  ]
+]

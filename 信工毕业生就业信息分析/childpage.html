@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Title</title>
+  <!--    <link rel="stylesheet" href="css/index.css"/>-->
+  <link rel="stylesheet" href="css/childpage.css" />
+  <script src="js/flexible.js"></script>
+  <script src="js/echarts.min.js"></script>
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/childpage.js"></script>
+
+</head>
+
+<body>
+  <!-- 头部的盒子 -->
+  <header onclick="window.location.href= 'index.html';return false">
+    <h1>毕业生行业构成及分布</h1>
+    <div class="showTime"></div>
+    <script>
+      var t = null;
+      t = setTimeout(time, 1000); //開始运行
+      function time() {
+        clearTimeout(t); //清除定时器
+        dt = new Date();
+        var y = dt.getFullYear();
+        var mt = dt.getMonth() + 1;
+        var day = dt.getDate();
+        var h = dt.getHours(); //获取时
+        var m = dt.getMinutes(); //获取分
+        var s = dt.getSeconds(); //获取秒
+        document.querySelector(".showTime").innerHTML =
+          "当前时间：" + y + "年" + mt + "月" + day + "日" + h + ":" + m + ":" + s;
+        t = setTimeout(time, 1000); //设定定时器，循环运行
+      }
+    </script>
+  </header>
+
+  <!-- 页面主体部分 -->
+  <section class="mainbox">
+    <div class="column">
+      <!-- 列标签 -->
+      <div class="panel">
+        <!--柱状图-->
+        <h2>行业分布</h2>
+        <div class="chart" id="div1"></div>
+        <div class="panel-footer"></div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="panel">
+        <!--雷达图-->
+        <h2>行业班级比例</h2>
+        <div class="chart" id="div2"></div>
+        <div class="panel-footer"></div>
+      </div>
+    </div>
+  </section>
+
+</body>
+
+</html>

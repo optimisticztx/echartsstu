@@ -1,0 +1,42 @@
+[
+  {
+    "money": "3000",
+    "number1": "20",
+    "number2": "9"
+  },
+  {
+    "money": "4000",
+    "number1": "38",
+    "number2": "20"
+  },
+  {
+    "money": "5000",
+    "number1": "75",
+    "number2": "37"
+  },
+  {
+    "money": "6000",
+    "number1": "68",
+    "number2": "43"
+  },
+  {
+    "money": "7000",
+    "number1": "18",
+    "number2": "71"
+  },
+  {
+    "money": "8000",
+    "number1": "15",
+    "number2": "67"
+  },
+  {
+    "money": "9000",
+    "number1": "5",
+    "number2": "14"
+  },
+  {
+    "money": "10000",
+    "number1": "3",
+    "number2": "8"
+  }
+]

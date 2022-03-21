@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Title</title>
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/childpage.css" />
+  <script src="js/flexible.js"></script>
+  <script src="js/echarts.min.js"></script>
+  <script src="js/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+  <!-- 头部的盒子 -->
+  <div id="xh" style="width: 270px;height: 44px;
+         position: absolute;left: 25px;top: 10px; z-index: 999" ;
+    onclick="window.location.href= 'index.html';return false">
+  </div>
+  <header>
+    <h1 onclick="window.location.href= 'index.html';return false"> 班级毕业去向分析</h1>
+    <div class=" showTime">
+    </div>
+    <script>
+      var t = null;
+      t = setTimeout(time, 1000); //開始运行
+      function time() {
+        clearTimeout(t); //清除定时器
+        dt = new Date();
+        var y = dt.getFullYear();
+        var mt = dt.getMonth() + 1;
+        var day = dt.getDate();
+        var h = dt.getHours(); //获取时
+        var m = dt.getMinutes(); //获取分
+        var s = dt.getSeconds(); //获取秒
+        document.querySelector(".showTime").innerHTML =
+          "当前时间：" + y + "年" + mt + "月" + day + "日" + h + ":" + m + ":" + s;
+        t = setTimeout(time, 1000); //设定定时器，循环运行
+      }
+    </script>
+  </header>
+  <section class="mainbox">
+    <div class="column">
+      <div class="panel">
+        <h2>男女毕业去向分布</h2>
+        <div class="chart" id="div1"></div>
+        <div class="panel-footer"></div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="panel">
+        <h2>男女比例</h2>
+        <div class="chart" id="div2"></div>
+        <div class="panel-footer"></div>
+      </div>
+    </div>
+  </section>
+  <script src="js/nannv.js"></script>
+</body>
+
+</html>
